@@ -1,6 +1,6 @@
 import logging
 import os
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 import requests
 from airflow import DAG
@@ -33,6 +33,7 @@ def fetch_weather_data():
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
+    'start_date': datetime(2025, 3, 26),
     'retries': 5,
     'retry_delay': timedelta(minutes=1),
 }
